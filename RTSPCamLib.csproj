@@ -1,50 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net9.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>RTSP Camera Library</Title>
+    <Authors>nosniktaj</Authors>
+    <Description>A library that allow for the streaming and recording of and ONVIF RTSP Camera </Description>
+     <Version>0.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="FFmpeg.AutoGen" Version="4.4.1.1" />
+    <PackageReference Include="System.Drawing.Common" Version="9.0.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="ffmpeg\avcodec-58.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="ffmpeg\avdevice-58.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="ffmpeg\avfilter-7.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="ffmpeg\avformat-58.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="ffmpeg\avutil-56.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="ffmpeg\ffmpeg.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="ffmpeg\ffplay.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="ffmpeg\ffprobe.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="ffmpeg\postproc-55.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="ffmpeg\swresample-3.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="ffmpeg\swscale-5.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
+   <ItemGroup>
+      <Content Include="ffmpeg\**\*">
+         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+         <Pack>true</Pack>
+         <PackagePath>ffmpeg\</PackagePath>
+      </Content>
+   </ItemGroup>
+   
 </Project>
